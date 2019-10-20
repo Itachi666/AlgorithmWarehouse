@@ -3,4 +3,5 @@ project(AlgorithmWarehouse)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(AlgorithmWarehouse main.cpp src/Graph.cpp src/Graph.h src/Sort.cpp src/Sort.h)
+add_executable(AlgorithmWarehouse main.cpp src/Graph.cpp src/Graph.h src/Sort.cpp src/Sort.h src/TypeConverter.cpp src/Tree.cpp src/Tree.h)
+#add_executable(AlgorithmWarehouse main.cpp)
