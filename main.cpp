@@ -1,51 +1,61 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include <vector>
+#include <unordered_map>
+#include <map>
+//#include "src/TypeConverter.cpp"
+
 using namespace std;
 
-int n,h;
-int ans=0;
-void dfs(int day, int ah, int bh, vector<int>& a, vector<int>& b) {
-    //printf("%d %d %d %d\n", day,ah,bh, ans);
-//    if (ah>=h && bh>=h) {
-//        ans+=pow(3,n-day);
-//        return;
-//    }
+vector<int> stringToIntegerVector(string input);
 
-    if (day==n) {
-        if (ah>=h && bh>=h)
-            ans++;
-        return;
+class Solution {
+public:
+    int jobScheduling(vector<int> &startTime, vector<int> &endTime, vector<int> &profit) {
+        map<int, int> times;
+
+        map<int, vector<int>> list;
+
+        int answer = 0;
+        times[0] = 0;
+        for (int i = 0; i < startTime.size(); i++) {
+            times[endTime[i]] = 0;
+            list[endTime[i]].push_back(i);
+        }
+
+        for (auto e:list) {
+            for (auto i:e.second) {
+                auto t = times.upper_bound(startTime[i]);
+                t--;
+                cout << t->first << endl;
+                answer = max(answer, t->second + profit[i]);
+
+
+                printf("%d %d\n", endTime[i], times[endTime[i]]);
+            }
+            times[e.first] = answer;
+        }
+
+
+        return answer;
     }
-
-    dfs(day+1, ah+a[day], bh, a,b);
-    dfs(day+1, ah, bh+b[day], a,b);
-    dfs(day+1, ah+a[day], bh+b[day], a,b);
-}
-
-void solution() {
-    cin>>n>>h;
-    ans=0;
-    vector<int> a(n);
-    vector<int> b(n);
-    for (int& x:a)
-        cin>>x;
-
-    for (int& x:b)
-        cin>>x;
-
-    dfs(0,0,0,a,b);
-    cout<<ans<<endl;
-}
+};
 
 int main() {
     freopen("1.in", "r", stdin);
-    int T;
-    cin >> T;
+    string line;
+    while (getline(cin, line)) {
+        vector<int> startTime = stringToIntegerVector(line);
+        getline(cin, line);
+        vector<int> endTime = stringToIntegerVector(line);
+        getline(cin, line);
+        vector<int> profit = stringToIntegerVector(line);
 
-    for (int TIM = 1; TIM <= T; TIM++) {
-        cout << "Case #" << TIM << ": ";
-        solution();
+        int ret = Solution().jobScheduling(startTime, endTime, profit);
+
+        string out = to_string(ret);
+        cout << out << endl;
     }
 
     return 0;
