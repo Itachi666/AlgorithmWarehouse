@@ -4,6 +4,11 @@
 #include <vector>
 #include <unordered_map>
 #include <map>
+#include <mutex>
+#include <condition_variable>
+#include <thread>
+#include <set>
+#include <stack>
 //#include "src/TypeConverter.cpp"
 
 using namespace std;
@@ -12,71 +17,50 @@ vector<int> stringToIntegerVector(string input);
 
 class Solution {
 public:
-    int f[6]={1,2,3,5,8,13};
-    int dp[14][14]={0};
-
-    int get(int n, int m) {
-        if (n<=0 || m<=0)
-            return 0x7fffff;
-
-        if (n>m)
-            swap(n,m);
-
-        if (dp[n][m]!=0x7fffffff)
-            return dp[n][m];
-
-        for (int i=m/2;i<m;i++)
-            dp[n][m]=min(dp[n][m], get(n,i) + get(n,m-i));
-
-        for (int i=n/2;i<n;i++)
-            dp[n][m]=min(dp[n][m], get(i,m) + get(n-i,m));
-
-        if (m-n==2 && m%2==1)
-        {
-            int t=(m+1)/2;
-            dp[n][m]=min(dp[n][m], 5+get(t-3,4));
-        }
-        return dp[n][m];
+    int gcd(int x, int y) {
+        return (x%y)? gcd(y, x%y) : y;
     }
 
-    int tilingRectangle(int n, int m) {
-        int answer=1;
-
-        if (n>m)
-            swap(n,m);
-
-        if (n==m)
-            return answer;
-
-        for (int i=1;i<=13;i++)
-            for (int j=1;j<=13;j++)
-                dp[i][j]=0x7fffffff;
-
-        for (int i=1;i<=13;i++)
-            dp[i][i]=1;
-
-        dp[1][2]=2;
-        for (int i=1;i<5;i++) {
-            dp[f[i]][f[i+1]]=dp[f[i-1]][f[i]]+1;
-        }
-
-        for (int i=2;i<=13;i++)
-            dp[1][i]=dp[1][i-1]+1;
-
-        for (int i=1;i<=13;i++)
-            for (int j=1;j<=13;j++)
-                if (dp[i][j]==0x7fffffff)
-                    dp[i][j]=get(i,j);
-
-        return dp[n][m];
+    bool isGoodArray(vector<int>& nums) {
+        return false;
     }
 };
 
-int main() {
+void Leetcode_cin() {
     freopen("1.in", "r", stdin);
-    int n,m;
-    cin>>n>>m;
-    Solution t;
-    cout<<t.tilingRectangle(n,m)<<endl;
+    string line;
+    while (getline(cin, line)) {
+        getline(cin, line);
+
+        vector<int> v = stringToIntegerVector(line);
+        cout<<endl<<line<<endl;
+
+        Solution().isGoodArray(v);
+        cout<<Solution().gcd(56,31)<<endl;
+
+    }
+}
+
+void nth()
+{
+    std::vector<int> v{5, 6, 4, 3, 2, 6, 7, 9, 3};
+
+    std::nth_element(v.begin(), v.begin() + v.size()/2, v.end());
+    std::cout << "The median is " << v[v.size()/2] << '\n';
+
+    for (auto it:v)
+        cout<<it<<' ';
+    cout<<endl;
+
+    std::nth_element(v.begin(), v.begin()+3, v.end(), greater<int>());
+    std::cout << "The second largest element is " << v[1] << '\n';
+
+    for (auto it:v)
+        cout<<it<<' ';
+    cout<<endl;
+}
+
+int main() {
+    nth();
     return 0;
 }
