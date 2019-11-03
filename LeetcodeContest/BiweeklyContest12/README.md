@@ -2,6 +2,8 @@
 
 最近两次的双周赛都做的不是很顺，在Q3上纠结了太久。
 
+
+
 ### 1243. Array Transformation 
 
 [题目](  https://leetcode.com/contest/biweekly-contest-12/problems/array-transformation/ )
@@ -11,6 +13,8 @@
 签到题，然后就跪了emmm，一开始直接遍历数组然后判断操作的，结果发现前面的改动会影响后面就很难受。改成标记那些位置会改变，然后一起改就好了。
 
 当然直接vector复制一个然后复制回去也可以，，，蠢了。
+
+
 
 ### 1244. Design A Leaderboard  
 
@@ -25,6 +29,8 @@
 但用两个map来写是可以的，一开始想到了这个但是有一点没想通就搁着写后面的了。思路很简单：一个map来存每个人的成绩，第二个map来存成绩。靠map自带的有序属性来获取最大的K个成绩。
 
 好像每个人的成绩用vector也够用了
+
+
 
 ### 1245. Tree Diameter  
 
