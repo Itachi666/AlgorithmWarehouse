@@ -55,8 +55,6 @@ dp[i][j]=\begin{equation}
 \end{equation}
 $$
 
-![](http://latex.codecogs.com/gif.latex?d p[i][j]=\left\{\begin{array}{ll}{0,} & {i=j} \\ {0,} & {j-i=1, s[i]=s[j]} \\ {\min (d p[i+1][j], d p[i][j-1])+1,} & {s[i] \neq s[j]} \\ {d p[i+1][j-1],} & {s[i]=s[j]}\end{array}\right.)
-
 出错是因为忘了两个相同字母也是一个回文串了，，也是初始条件之一。
 
 
