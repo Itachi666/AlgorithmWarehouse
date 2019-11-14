@@ -2,7 +2,7 @@
 // Created by Niujx on 2019/10/3.
 //
 
-#include <cmath>
+#include <algorithm>
 #include "Sort.h"
 
 void Sort::InsertSort(int *a, int n) {

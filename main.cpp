@@ -1,15 +1,5 @@
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <unordered_map>
-#include <map>
-#include <mutex>
-#include <condition_variable>
-#include <thread>
-#include <set>
-#include <stack>
-//#include "src/TypeConverter.cpp"
+#include <bits/stdc++.h>
+#include "src/Prime.h"
 
 using namespace std;
 
@@ -41,26 +31,41 @@ void Leetcode_cin() {
     }
 }
 
-void nth()
-{
-    std::vector<int> v{5, 6, 4, 3, 2, 6, 7, 9, 3};
+void solution() {
+    int n,m,ans=-1;
+    cin>>n>>m;
+    vector<int> a(n);
+    for (int& x:a)
+        cin>>x;
 
-    std::nth_element(v.begin(), v.begin() + v.size()/2, v.end());
-    std::cout << "The median is " << v[v.size()/2] << '\n';
+    for (int i=0;i<=128;i++)
+    {
+        int t=0;
+        for (int j=0;j<n;j++)
+            t+=a[j]^i;
+        //cout<<i<<' '<<t<<endl;
 
-    for (auto it:v)
-        cout<<it<<' ';
-    cout<<endl;
+        if (t<=m)
+            ans=max(i,ans);
+    }
+    cout<<ans<<endl;
 
-    std::nth_element(v.begin(), v.begin()+3, v.end(), greater<int>());
-    std::cout << "The second largest element is " << v[1] << '\n';
 
-    for (auto it:v)
-        cout<<it<<' ';
-    cout<<endl;
+}
+
+void Kickstart_cin() {
+    freopen("1.in", "r", stdin);
+    int T;
+    cin >> T;
+
+    for (int TIM = 1; TIM <= T; TIM++) {
+        cout << "Case #" << TIM << ": ";
+        solution();
+    }
 }
 
 int main() {
-    nth();
+    Kickstart_cin();
+    cout<<Prime::miller_rabin(1203487239841);
     return 0;
 }
