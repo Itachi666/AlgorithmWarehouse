@@ -6,8 +6,22 @@
 #define ALGORITHMWAREHOUSE_PRIME_H
 
 
-class Prime {
+//
+// Created by Niujx on 2019/11/12.
+//
+#include <random>
 
+namespace Prime {
+#define random(a, b) (rand() % ((b) -(a)) +(a))
+    typedef long long LL;
+
+    LL power_mod(LL x, LL n, LL mod);
+
+    LL mulmod(LL x, LL y, LL n);
+
+    bool witness(LL a, LL n, LL u, LL t);
+
+    bool miller_rabin(LL n, int times = 20);
 };
 
 
