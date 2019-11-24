@@ -1,9 +1,12 @@
 #include <bits/stdc++.h>
 #include "src/Prime.h"
+#include "src/Matrix.h"
 
 using namespace std;
+using ll = long long;
 
 vector<int> stringToIntegerVector(string input);
+ll quickPow(ll a, ll b);
 
 class Solution {
 public:
@@ -65,7 +68,16 @@ void Kickstart_cin() {
 }
 
 int main() {
-    Kickstart_cin();
-    cout<<Prime::miller_rabin(1203487239841);
+
+    vector<vector<int>> m(10,vector<int>(10, 1));
+
+    Matrix<int> base(m);
+    base.display();
+
+    base=base^3;
+    base.display();
+
+    cout<<quickPow(2,32);
+
     return 0;
 }
