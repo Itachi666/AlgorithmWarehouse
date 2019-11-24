@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "src/Prime.h"
+#include "src/TempAlg/Prime.h"
 #include "src/Matrix.h"
 #include "src/Tree/Tree.h"
 
