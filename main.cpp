@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include "src/Prime.h"
 #include "src/Matrix.h"
+#include "src/Tree/Tree.h"
 
 using namespace std;
 using ll = long long;

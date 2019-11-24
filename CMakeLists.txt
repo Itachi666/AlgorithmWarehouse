@@ -4,5 +4,6 @@ project(AlgorithmWarehouse)
 set(CMAKE_CXX_STANDARD 14)
 
 aux_source_directory(./src srclist)
+aux_source_directory(./src/Tree treelist)
 
-add_executable(AlgorithmWarehouse main.cpp ${srclist} src/quickPow.cpp)
+add_executable(AlgorithmWarehouse main.cpp ${srclist} ${treelist})

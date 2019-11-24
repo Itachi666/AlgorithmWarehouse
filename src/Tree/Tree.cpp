@@ -75,4 +75,3 @@ string integerVectorToString(vector<int> list, int length) {
     return "[" + result.substr(0, result.length() - 2) + "]";
 }
 
-
