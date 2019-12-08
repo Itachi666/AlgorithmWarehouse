@@ -8,6 +8,15 @@ using ll = long long;
 
 vector<int> stringToIntegerVector(string input);
 ll quickPow(ll a, ll b);
+struct ListNode {
+    explicit ListNode(int x);
+};
+
+struct Listnode {
+    int val;
+    Listnode *next, *before;
+    explicit Listnode(int x): val(x), next(NULL), before(NULL) {};
+};
 
 class Solution {
 public:
@@ -68,9 +77,24 @@ void Kickstart_cin() {
     }
 }
 
-int main() {
+struct cmp {
+    bool operator ()(const string& s1, const string& s2) {
+        return s1<s2;
+    }
+};
 
-    vector<vector<int>> m(10,vector<int>(10, 1));
+int main() {
+    vector<string> s;
+    for (int i=1;i<26;i++)
+        s.push_back(to_string(i));
+    sort(s.begin(), s.end(), cmp());
+    priority_queue<string, vector<string>, cmp> t;
+    for (auto& t:s)
+        cout<<t<<' ';
+
+/*    vector<vector<int>> m(10,vector<int>(10, 1));
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>, less<>> q;
 
     Matrix<int> base(m);
     base.display();
@@ -78,7 +102,7 @@ int main() {
     base=base^3;
     base.display();
 
-    cout<<quickPow(2,32);
+    cout<<quickPow(2,32);*/
 
     return 0;
 }
